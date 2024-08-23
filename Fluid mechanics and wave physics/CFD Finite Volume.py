@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import imageio
+
 
 # -*- coding: utf-8 -*-
 """
@@ -36,7 +38,7 @@ def conserved_variables(rho, vx, vy, V):
     py = rho * V * vy # cell momentum about y-axis
     return m, px, py
 
-def primitive_variables(rho, vx, vy, V):
+def primitive_variables(m, px, py, V):
     """
     Calculate the primitive variable from the conservative
     ----------
@@ -56,7 +58,7 @@ def primitive_variables(rho, vx, vy, V):
     rho = m / V
     vx = px / rho / V
     vy = py / rho / V
-    return m, px, py
+    return rho, vx, vy
 
 def grad(f, dx):
 	"""
@@ -72,7 +74,7 @@ def grad(f, dx):
 	
 	return f_dx, f_dy
 
-def extrapolat(f, f_dx, f_dy, dx):
+def extrapolate(f, f_dx, f_dy, dx):
 	"""
     Calculate the gradients of a field
 	f        is a matrix of the field
@@ -245,6 +247,9 @@ def main():
 				plt.savefig('tmp/fv%03d.png' % (outputCount-1),dpi=100, bbox_inches='tight', pad_inches=0)
 			outputCount += 1
 			plt.pause(0.001)
+            
+            
+            
 			
 	# Save figure
 	plt.savefig('finitevolume.png',dpi=240)
