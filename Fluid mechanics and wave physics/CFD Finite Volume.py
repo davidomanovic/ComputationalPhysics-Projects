@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import imageio
-
 
 # -*- coding: utf-8 -*-
 """
@@ -27,7 +25,6 @@ def conserved_variables(rho, vx, vy, V):
     vx : cell x-velocity
     vy : cell y-velocity
     V : cell volume
-    
     Returns
     -------
     Mass and momentum
